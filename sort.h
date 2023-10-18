@@ -1,6 +1,5 @@
-#ifndef SORT_H
 #define SORT_H
+#include "generate.h"
 
-// Add function declarations if you implement sorting
-
-#endif
+int comparePersons(const void *a, const void *b);
+void sortPersonsByLastName(Person persons[], int count);

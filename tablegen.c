@@ -7,6 +7,7 @@
 #include "sort.h"
 #include "constants.h"
 
+int userRowCount;
 int main(){
     system("clear");
     srand(time(NULL));
@@ -34,17 +35,13 @@ int main(){
         scanf("%s", choiceColumn);
 
         int cols[MAX_COLS];
+        memset(cols, 0, sizeof(cols)); 
+
         char *split = strtok(choiceColumn, ",");
         int i = 0;
         while(split != NULL) {
             cols[i++] = atoi(split);
             split = strtok(NULL, ",");
-        }
-        // Print parsed columns
-        for(int i = 0; i < MAX_COLS; i++){
-            if(cols[i] > 0) {
-                printf("%d ", cols[i]); 
-            }
         }
 
         printf("\nEnter row count (1 < n < 1M): ");
@@ -55,6 +52,7 @@ int main(){
         printf("\nSummary of Properties:");
         printf("\nColumns: %s", choiceColumn);
         printf("\nRow count: %i", choiceRow);
+        userRowCount = choiceRow;
         printf("\nFile name: %s", choiceName);
         printf("\nTable written successfully to %s.csv", choiceName);
         generateData(cols, choiceRow, choiceName);
